@@ -6,17 +6,16 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}  
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+Phần này giới thiệu ba bài viết kỹ thuật đã được đăng trên [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj).
 
-Tại đây sẽ là phần liệt kê, giới thiệu các blogs mà các bạn đã đăng trên [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). Ví dụ:
+### [Blog 1 - Chống gian lận SMS OTP với Vonage Network API và Amazon Cognito](3.1-blog1/)
 
-###  [Blog 1 - SESSION POLICIES TRONG AMAZON EKS POD IDENTITY](3.1-blog1/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+Bài viết trình bày kiến trúc bảo mật nhiều lớp nhằm giảm gian lận cước SMS, tấn công SIM Swap và các yêu cầu OTP giả mạo. Giải pháp kết hợp Amazon Cognito, Lambda Trigger, AWS WAF, Vonage Network API, đánh giá rủi ro và xác thực ngầm.
 
-###  [Blog 2 - ...](3.2-blog2/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+### [Blog 2 - Đơn giản hóa truy cập dữ liệu doanh nghiệp với AWS Transfer Family Web Apps và Terraform](3.2-blog2/)
 
-###  [Blog 3 - ...](3.3-blog3/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+Bài viết giải thích cách giúp người dùng doanh nghiệp truy cập Amazon S3 an toàn qua giao diện web mà không cần sử dụng AWS Console. Giải pháp kết hợp Transfer Family Web Apps, IAM Identity Center, S3 Access Grants, CloudTrail và Terraform.
+
+### [Blog 3 - Hiện đại hóa SignalR với AWS AppSync Event API](3.3-blog3/)
+
+Bài viết phân tích cách chuyển giao tiếp thời gian thực của ứng dụng .NET và React từ hạ tầng SignalR tự quản lý sang AWS AppSync Event API, qua đó giảm gánh nặng vận hành WebSocket nhưng vẫn duy trì khả năng cập nhật publish/subscribe có thể mở rộng.

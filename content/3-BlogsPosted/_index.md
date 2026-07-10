@@ -6,17 +6,16 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+This section presents three technical articles published to the [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj).
 
-This section will list and introduce the blogs you have posted to [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). For example:
+### [Blog 1 - Combating SMS OTP Fraud with Vonage Network API and Amazon Cognito](3.1-blog1/)
 
-###  [Blog 1 - SESSION POLICIES IN AMAZON EKS POD IDENTITY](3.1-blog1/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+This article presents a layered security architecture for reducing SMS toll fraud, SIM-swap attacks, and fraudulent OTP requests. It combines Amazon Cognito, Lambda triggers, AWS WAF, Vonage Network APIs, risk assessment, and silent authentication.
 
-###  [Blog 2 - ...](3.2-blog2/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+### [Blog 2 - Simplifying Enterprise Data Access with AWS Transfer Family Web Apps and Terraform](3.2-blog2/)
 
-###  [Blog 3 - ...](3.3-blog3/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+This article explains how business users can securely access Amazon S3 through a web portal without using the AWS Console. The solution combines Transfer Family Web Apps, IAM Identity Center, S3 Access Grants, CloudTrail, and Terraform.
+
+### [Blog 3 - Modernizing SignalR with AWS AppSync Event API](3.3-blog3/)
+
+This article explores migrating real-time communication in a .NET and React application from self-managed SignalR infrastructure to AWS AppSync Event API, reducing WebSocket operational overhead while retaining scalable publish/subscribe updates.
