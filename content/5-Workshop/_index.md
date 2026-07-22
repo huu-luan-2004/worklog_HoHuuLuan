@@ -1,31 +1,67 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-07-19
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Secure Hybrid Access to S3 using VPC Endpoints
 
-#### Overview
+# Deploying BravelSport on AWS
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+BravelSport is an e-commerce and sports facility booking platform. Its source code includes a React/Vite frontend and a NestJS backend; the backend uses MongoDB through Mongoose, JWT for authentication, and Socket.IO for real-time chat.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+This workshop describes the **target architecture and hands-on deployment process**. It does not claim that the current website is already running on the complete AWS architecture unless supporting evidence from the AWS Console is available.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+## Target architecture
 
-#### Content
+- The frontend is built into static files, stored in a private S3 Frontend Bucket, and distributed through CloudFront.
+- AWS WAF is associated with CloudFront to inspect requests at the edge layer.
+- CloudFront forwards `/api/*` and `/socket.io/*` to an Application Load Balancer.
+- The ALB forwards requests through an `ip`-type Target Group to ECS Fargate tasks on port `3000`.
+- Socket.IO uses `/socket.io/*` as its transport path; the chat application uses the `/chat` namespace.
+- ECS Fargate runs in Private Subnets without public IP addresses.
+- ECS connects to MongoDB Atlas outside the VPC through a NAT Gateway and an Internet Gateway.
+- The Amazon EC2 Ubuntu instance is only a build and deployment machine; it does not receive production requests.
+- S3 Media is a migration or extension component in this workshop because the current source code supports Cloudinary and local `/uploads` storage.
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+![BravelSport AWS Architecture](/images/5-Workshop/architecture/bravelsport-aws-architecture.png)
+
+## Workshop contents
+
+1. [5.1. Workshop overview](./5.1-Workshop-overview/)
+2. [5.2. Prerequisites](./5.2-Prerequisite/)
+3. [5.3. Building the network infrastructure](./5.3-Network-infrastructure/)
+4. [5.4. Backend deployment](./5.4-Backend-deployment/)
+5. [5.5. Frontend deployment](./5.5-Frontend-deployment/)
+6. [5.6. Database and media](./5.6-Data-and-media/)
+7. [5.7. End-to-end testing](./5.7-Testing/)
+8. [5.8. Security and cost](./5.8-Security-and-cost/)
+9. [5.9. Resource cleanup](./5.9-Cleanup/)
+
+### Notes
+
+Do not include access keys, secrets, MongoDB connection strings, JWT secrets, authentication cookies, or full Account IDs in the documentation. Values that have not been confirmed by the team must remain as `[TO BE CONFIRMED]`.
+
+## Verification
+
+- The Hugo menu displays all sections from 5.1 to 5.9 in the correct order.
+- Every image path begins with `/images/5-Workshop/`.
+- No `notice` shortcode remains.
+- The pages clearly distinguish the EC2 Build Machine from the ECS Fargate runtime.
+
+## Common issues
+
+| Issue | Cause | Resolution |
+|---|---|---|
+| Menu items are in the wrong order | Incorrect `weight` or `pre` values | Check the front matter of each chapter |
+| Images are not displayed | Incorrect directory under `static/` | Compare the path with the image inventory |
+| Child-page links are broken | A directory was renamed without updating links | Verify relative links before building Hugo |
+
+## Summary
+
+This workshop covers preparation, network design, backend and frontend deployment, testing, security, cost management, and cleanup.
+
+## Navigation
+
+- Next section: [5.1. Workshop overview](./5.1-Workshop-overview/)
